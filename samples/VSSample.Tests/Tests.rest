@@ -1,0 +1,25 @@
+
+### Test1 
+POST http://localhost:7071/orchestrators/E1_HelloSequence/
+
+### Test 2 - CANNOT call an activity directly.
+POST http://localhost:7071/orchestrators/E1_SayHello 
+
+
+### Test3 
+POST http://localhost:7071/orchestrators/E2_BackupSiteContent
+
+### Monitor Test
+POST http://localhost:7071/orchestrators/E3_Monitor
+
+
+### Restart-VMs Test - CANNOT directly call the orchestrator.
+### Instead call the http starter func  http://localhost:7071/RestartVMs_HttpStart#
+POST http://localhost:7071/RestartVMs_HttpStart 
+Content-Type: application/json
+ 
+{
+    "SubscriptionId": "0c378775-d18a-45bb-b426-3627de556dd1",
+    "ResourceGroup": "my-resource-group",
+   
+}

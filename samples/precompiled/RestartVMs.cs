@@ -34,7 +34,7 @@ namespace VSSample
             // List all of the VMs in my subscription and add them to a list.
             DurableHttpRequest request = new DurableHttpRequest(
                 HttpMethod.Get,
-                new Uri($"https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines?api-version=2018-06-01"),
+                new Uri($"https://management.azure.com/subscriptions/0c378775-d18a-45bb-b426-3627de556dd1/providers/Microsoft.Compute/virtualMachines?api-version=2018-06-01"),
                 tokenSource: managedIdentity);
             DurableHttpResponse response = await context.CallHttpAsync(request);
             if (response.StatusCode != HttpStatusCode.OK)
@@ -56,7 +56,7 @@ namespace VSSample
             {
                 var restartRequest = new DurableHttpRequest(
                     HttpMethod.Post, 
-                    new Uri($"https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart?api-version={apiVersion}"),
+                    new Uri($"https://management.azure.com/subscriptions/0c378775-d18a-45bb-b426-3627de556dd1/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/{vmName}/restart?api-version={apiVersion}"),
                     tokenSource: managedIdentity);
                 DurableHttpResponse restartResponse = await context.CallHttpAsync(restartRequest);
                 if (restartResponse.StatusCode != HttpStatusCode.OK)
@@ -77,7 +77,7 @@ namespace VSSample
             {
                 var example = new ResourceInfo
                 {
-                    SubscriptionId = "4c51f150-5b69-4cda-aa7a-88a9ac297393",
+                    SubscriptionId = "0c378775-d18a-45bb-b426-3627de556dd1",
                     ResourceGroup = "my-resource-group"
                 };
 
